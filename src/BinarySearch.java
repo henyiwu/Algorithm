@@ -1,12 +1,18 @@
+import java.util.Arrays;
+
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = {14,54,67,88,94,103,104};
-        int i = binarySearch(88, arr);
-        System.out.println("index = " + i);
+        int[] arr = {14,54,67,882,9411,10322,44104,4444,23,13,4};
+        int target = 882;
+        Sort.quickSort(0, arr.length-1, arr);
+        System.out.println(Arrays.toString(arr));
+        int index = binarySearch(target, arr);
+        System.out.println("target: " + target);
+        System.out.println("index:" + index);
     }
 
     /**
-     * 二分搜索，时间复杂度O(logN)
+     * 二分搜索，平均时间复杂度O(logN)
      * @param target 目标数字
      * @param arr 已排序数组
      * @return 目标数字索引
