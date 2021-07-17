@@ -44,11 +44,20 @@ public class Sort {
      */
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
-        for (int i = 0; i < arr.length-1; i++){
-            for (int j = 0; j < arr.length-i-1; j++) {
-                if (arr[j] > arr[j+1]) {
-                    swap(arr, j, j+1);
-                }
+        for (int i = arr.length-1; i > 0; i--) {
+            bubble(arr, i);
+        }
+    }
+
+    /**
+     * 每趟冒泡
+     * @param arr 待操作数组
+     * @param n 数组长度
+     */
+    public static void bubble(int[] arr, int n) {
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > arr[i+1]) {
+                swap(arr, i, i+1);
             }
         }
     }
@@ -68,6 +77,10 @@ public class Sort {
     }
 
 //    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     /**
      * 交换数组中的两个数
