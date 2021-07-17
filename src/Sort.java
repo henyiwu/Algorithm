@@ -1,6 +1,5 @@
 public class Sort {
 
-//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     /**
      * 快速排序
      * 平均时间复杂度：O(NlogN)
@@ -33,7 +32,8 @@ public class Sort {
     public static void quickSort(int[] arr) {
         quickSort(0, arr.length-1, arr);
     }
-//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+//---------------------------------------------------
 
     /**
      * 冒泡排序
@@ -45,24 +45,47 @@ public class Sort {
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
         for (int i = arr.length-1; i > 0; i--) {
-            bubble(arr, i);
+            boolean flag = bubble(arr, i);
+            if (flag) return;
         }
     }
 
+//    /**
+//     * 每趟冒泡
+//     * @param arr 待操作数组
+//     * @param n 数组长度
+//     */
+//    public static void bubble(int[] arr, int n) {
+//        for (int i = 0; i < n; i++) {
+//            if (arr[i] > arr[i+1]) {
+//                swap(arr, i, i+1);
+//            }
+//        }
+//    }
+
     /**
-     * 每趟冒泡
+     * 每趟冒泡，采用标志位优化方案
      * @param arr 待操作数组
-     * @param n 数组长度
+     * @param n 待操作数组长度
+     * @return 数组是否有序
      */
-    public static void bubble(int[] arr, int n) {
+    public static boolean bubble(int[] arr ,int n) {
+        boolean ordered = true;
         for (int i = 0; i < n; i++) {
             if (arr[i] > arr[i+1]) {
                 swap(arr, i, i+1);
+                ordered = false;
             }
         }
+        return ordered;
     }
 
-//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//----------------------------------------------------
+
+    /**
+     * 选择排序
+     * @param arr 待操作数组
+     */
     public static void selectSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
         for (int i = 0; i < arr.length-1; i++) {
@@ -76,11 +99,7 @@ public class Sort {
         }
     }
 
-//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//----------------------------------------------------
 
     /**
      * 交换数组中的两个数
