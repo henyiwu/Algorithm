@@ -71,14 +71,14 @@ public class Sort {
      * @return 数组是否有序
      */
     public static boolean bubble_method1(int[] arr ,int n) {
-        boolean ordered = true;
+        boolean isSorted = true;
         for (int i = 0; i < n; i++) {
             if (arr[i] > arr[i+1]) {
                 swap(arr, i, i+1);
-                ordered = false;
+                isSorted = false;
             }
         }
-        return ordered;
+        return isSorted;
     }
 
     /**
@@ -86,18 +86,18 @@ public class Sort {
      */
     public static void bubble_method2(int[] arr) {
         if (arr == null || arr.length < 2) return;
-        boolean ordered = true;
+        boolean isSorted = true;
         int pos = 0;
         int k = arr.length - 1;
         for (int i = 0; i < arr.length-1; i++) {
             for (int j = 0; j < k; j++) {
                 if (arr[j] > arr[j+1]) {
                     swap(arr, j, j+1);
-                    ordered = false;
+                    isSorted = false;
                     pos = j;
                 }
             }
-            if (ordered) return;
+            if (isSorted) return;
             k = pos;
         }
     }
