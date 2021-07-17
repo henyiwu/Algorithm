@@ -45,31 +45,32 @@ public class Sort {
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
         for (int i = arr.length-1; i > 0; i--) {
-            boolean flag = bubble(arr, i);
+            boolean flag = bubble_method1(arr, i);
             if (flag) return;
         }
     }
 
-//    /**
-//     * 每趟冒泡
-//     * @param arr 待操作数组
-//     * @param n 数组长度
-//     */
-//    public static void bubble(int[] arr, int n) {
-//        for (int i = 0; i < n; i++) {
-//            if (arr[i] > arr[i+1]) {
-//                swap(arr, i, i+1);
-//            }
-//        }
-//    }
+    /**
+     * 每趟冒泡
+     * @param arr 待操作数组
+     * @param n 数组长度
+     */
+    public static void bubble(int[] arr, int n) {
+        for (int i = 0; i < n; i++) {
+            if (arr[i] > arr[i+1]) {
+                swap(arr, i, i+1);
+            }
+        }
+    }
 
     /**
-     * 每趟冒泡，采用标志位优化方案
+     * 冒泡排序写法1，每趟冒泡，采用标志位优化方案，这种优化方案适用于前面连片的数组，对于5，1，2，3，4之类的数组结构，
+     * 效果不佳。
      * @param arr 待操作数组
      * @param n 待操作数组长度
      * @return 数组是否有序
      */
-    public static boolean bubble(int[] arr ,int n) {
+    public static boolean bubble_method1(int[] arr ,int n) {
         boolean ordered = true;
         for (int i = 0; i < n; i++) {
             if (arr[i] > arr[i+1]) {
@@ -78,6 +79,27 @@ public class Sort {
             }
         }
         return ordered;
+    }
+
+    /**
+     * 冒泡排序优化方案：记录上一次发生交换的下标
+     */
+    public static void bubble_method2(int[] arr) {
+        if (arr == null || arr.length < 2) return;
+        boolean ordered = true;
+        int pos = 0;
+        int k = arr.length - 1;
+        for (int i = 0; i < arr.length-1; i++) {
+            for (int j = 0; j < k; j++) {
+                if (arr[j] > arr[j+1]) {
+                    swap(arr, j, j+1);
+                    ordered = false;
+                    pos = j;
+                }
+            }
+            if (ordered) return;
+            k = pos;
+        }
     }
 
 //----------------------------------------------------

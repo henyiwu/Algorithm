@@ -2,9 +2,9 @@ import java.util.Arrays;
 
 public class BinarySearch {
     public static void main(String[] args) {
-        int[] arr = {14,54,67,882,9411,10322,44104,4444,23,13,4};
+        int[] arr = {14,54,67,882,9411, 1,43,10322,44104,4444,23,13,4};
         int target = 882;
-        Sort.bubbleSort(arr);
+        Sort.bubble_method2(arr);
         System.out.println(Arrays.toString(arr));
         int index = binarySearch(target, arr);
         System.out.println("target: " + target);
