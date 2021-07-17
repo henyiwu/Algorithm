@@ -54,7 +54,27 @@ public class Sort {
     }
 
 //    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public static void selectSort(int[] arr) {
+        if (arr == null || arr.length < 2) return;
+        for (int i = 0; i < arr.length-1; i++) {
+            int min = i;
+            for (int j = i; j < arr.length; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j;
+                }
+            }
+            swap(arr, i, min);
+        }
+    }
 
+//    >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    /**
+     * 交换数组中的两个数
+     * @param arr 待操作数据
+     * @param i 下标 i
+     * @param j 下表 j
+     */
     private static void swap(int[] arr, int i, int j) {
         int temp = arr[j];
         arr[j] = arr[i];
