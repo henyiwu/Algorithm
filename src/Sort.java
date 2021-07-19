@@ -111,13 +111,37 @@ public class Sort {
     public static void selectSort(int[] arr) {
         if (arr == null || arr.length < 2) return;
         for (int i = 0; i < arr.length-1; i++) {
-            int min = i;
+            int minIndex = i;
             for (int j = i; j < arr.length; j++) {
-                if (arr[j] < arr[min]) {
-                    min = j;
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
                 }
             }
-            swap(arr, i, min);
+            swap(arr, i, minIndex);
+        }
+    }
+
+    /**
+     * 快速排序优化方案：
+     * 外排序设置左右指针，记录最大和最小下标，可减少循环次数
+     */
+    public static void selectSort_method2(int[] arr) {
+        for (int left = 0, right = arr.length-1; left < right; left++, right--) {
+            int minIndex = left;
+            int maxIndex = right;
+            for(int index = left; index <= right; index++) {
+                if (arr[index] < arr[minIndex]) {
+                    minIndex = index;
+                }
+                if (arr[index] > arr[maxIndex]) {
+                    maxIndex = index;
+                }
+            }
+            swap(arr, left, minIndex);
+            if (left == maxIndex) {
+                maxIndex = minIndex;
+            }
+            swap(arr, right, maxIndex);
         }
     }
 
@@ -133,5 +157,17 @@ public class Sort {
         int temp = arr[j];
         arr[j] = arr[i];
         arr[i] = temp;
+    }
+
+    /**
+     * 异或实现两数交换，前提是i和j不相等
+     * @param arr 待操作数据
+     * @param i 下标 i
+     * @param j 下表 j
+     */
+    private static void swap_OR(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 }
