@@ -3,8 +3,8 @@ public class Sort {
     /**
      * 快速排序
      * 平均时间复杂度：O(NlogN)
-     * 最优时间复杂度：O(logN)，即每一次都平均分数组
-     * 最差的时间复杂度：O(N)，退化为冒泡排序
+     * 最优时间复杂度：logN，即每一次都平均分数组
+     * 最差的时间复杂度：N，退化为冒泡排序
      * @param start 数组起始数
      * @param end 数字结尾数
      * @param arr 待排序数组
@@ -38,8 +38,8 @@ public class Sort {
     /**
      * 冒泡排序
      * 平均时间复杂度：O(N^2)
-     * 最差时间复杂度：O(N^2)
-     * 最优时间复杂度：O(N)
+     * 最差时间复杂度：N^2
+     * 最优时间复杂度：N
      * @param arr 待排序数组
      */
     public static void bubbleSort(int[] arr) {
@@ -142,6 +142,23 @@ public class Sort {
                 maxIndex = minIndex;
             }
             swap(arr, right, maxIndex);
+        }
+    }
+
+//----------------------------------------------------
+
+    /**
+     * 插入排序
+     * 平均时间复杂度 O(n^2)
+     * 最差时间复杂度 n^2
+     * @param arr
+     */
+    public void insertSort(int[] arr) {
+        // 0 ~ i 有序
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i - 1; j >= 0 && arr[j] > arr[j+1]; j--) {
+                swap(arr, j, j+1);
+            }
         }
     }
 
