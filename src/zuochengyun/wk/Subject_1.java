@@ -1,4 +1,4 @@
-package zuochengyun;
+package zuochengyun.wk;
 
 /**
  * Q1:一个整型数组中，有一种数出现了奇数次，其他数字都出现了偶数次，找出这个出现奇数次的数
