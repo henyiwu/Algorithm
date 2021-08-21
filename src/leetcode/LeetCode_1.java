@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.HashMap;
+
 /**
  * 1. 两数之和
  * 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 target  的那 两个 整数，并返回它们的数组下标。
@@ -33,7 +35,7 @@ package leetcode;
 
 public class LeetCode_1 {
     public static void main(String[] args) {
-        int[] ints = Solution.twoSum(new int[]{3, 2, 4}, 6);
+        int[] ints = Solution.twoSum2(new int[]{3, 2, 5,4}, 8);
         for (int i=0; i<ints.length; i++) {
             System.out.println(ints[i]);
         }
@@ -55,6 +57,17 @@ class Solution {
                     return new int[] {i, j};
                 }
             }
+        }
+        return null;
+    }
+
+    public static int[] twoSum2(int[] arr, int target) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (hashMap.containsKey(target - arr[i])) {
+                return new int[] {hashMap.get(target - arr[i]), i};
+            }
+            hashMap.put(arr[i], i);
         }
         return null;
     }
