@@ -53,6 +53,9 @@ public class LeetCode_4 {
 
 }
 
+/**
+ * 时间复杂度为
+ */
 class Solution4 {
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length == 0 && nums2.length == 0) {
@@ -68,5 +71,4 @@ class Solution4 {
             return result[(nums1.length+nums2.length)>>1];
         }
     }
-
 }

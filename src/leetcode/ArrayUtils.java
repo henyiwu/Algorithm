@@ -18,5 +18,4 @@ public class ArrayUtils {
             arrayC[cDex++] = arrayB[bDex++];
         }
     }
-
 }
