@@ -16,7 +16,6 @@ public class LeetCode_3 {
         int abcabcbb = lengthOfLongestSubstring("abcabcbb");
         System.out.println(abcabcbb);
     }
-
     public static int lengthOfLongestSubstring(String s) {
         int max = 0;
         // 往左边第一个与当前字符相同的数的位置
@@ -24,6 +23,9 @@ public class LeetCode_3 {
         HashMap<Character, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < s.length(); i++) {
             if (hashMap.containsKey(s.charAt(i))) {
+                // 为什么是max，加入序列是 a b b c d a
+                // 取到第二个a的时候，left是2，hashMap.get(s.charAt(i))+1是1
+                // 我们想要的是2
                 left = Math.max(left, hashMap.get(s.charAt(i))+1);
             }
             hashMap.put(s.charAt(i), i);
