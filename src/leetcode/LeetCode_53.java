@@ -32,14 +32,13 @@ public class LeetCode_53 {
         System.out.println(maxSubArray(new int[] {-2,1,-3}));
     }
 
-    /**
-     [-2,1,-3]
-     */
     public static int maxSubArray(int[] nums) {
         int preMax = 0;
         int curMax = nums[0];
         for (int item : nums) {
+            // 一定包括了当前item
             preMax = Math.max(item, item + preMax);
+            // 如果加上当前item反而小，可以舍弃掉
             curMax = Math.max(curMax, preMax);
         }
         return curMax;
