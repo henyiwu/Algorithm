@@ -29,4 +29,22 @@ class Solution_136 {
         }
         return result;
     }
+
+    public static void printOddTimesNum2(int[] arr) {
+        int eor = 0;
+        for (int j : arr) {
+            eor ^= j;
+        }
+        // 到这里，eor = a ^ b
+        // 并且eor!=0（a和b不相等），则a和b的二进制一定有一位不相等
+        int rightOne = eor & (~eor + 1); // 提取出最右侧的1
+
+        int onlyOne = 0;
+        for (int cur : arr) {
+            if ((cur & rightOne) == 0) {
+                onlyOne ^= cur;
+            }
+        }
+        System.out.println(onlyOne + " " + (eor ^ onlyOne));
+    }
 }
