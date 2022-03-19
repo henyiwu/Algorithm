@@ -12,30 +12,30 @@ public class MergeSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    public static void sort(int[] a) {
-        aux = new int[a.length];
-        sort(a, 0, a.length-1);
+    public static void sort(int[] arr) {
+        aux = new int[arr.length];
+        sort(arr, 0, arr.length-1);
     }
 
-    public static void sort(int[] a, int lo, int hi) {
-        if (hi <= lo) return;
-        int mid = lo + (hi - lo) / 2;
-        sort(a, lo, mid);
-        sort(a, mid + 1, hi);
-        merge(a, lo, mid, hi);
+    public static void sort(int[] arr, int start, int end) {
+        if (end <= start) return;
+        int mid = start + (end - start) / 2;
+        sort(arr, start, mid);
+        sort(arr, mid + 1, end);
+        merge(arr, start, mid, end);
     }
 
-    public static void merge(int[] a, int lo, int mid, int hi) {
-        int i = lo;
+    public static void merge(int[] arr, int start, int mid, int end) {
+        int i = start;
         int j = mid + 1;
-        for (int k = lo; k <= hi; k++) {
-            aux[k] = a[k];
+        for (int k = start; k <= end; k++) {
+            aux[k] = arr[k];
         }
-        for (int k = lo; k <= hi; k++) {
-            if (i > mid) a[k] = aux[j++]; // 数组左边已经遍历完，直接使用右边的数
-            else if (j > hi) a[k] = aux[i++]; // 数组右边已经遍历完，直接使用左边的数
-            else if (aux[j] < aux[i]) a[k] = aux[j++]; // 如果数组右边的数比较小，使用右边的数
-            else a[k] = aux[i++]; // 如果数组左边的数比较小，使用左边的数
+        for (int k = start; k <= end; k++) {
+            if (i > mid) arr[k] = aux[j++]; // 数组左边已经遍历完，直接使用右边的数
+            else if (j > end) arr[k] = aux[i++]; // 数组右边已经遍历完，直接使用左边的数
+            else if (aux[j] < aux[i]) arr[k] = aux[j++]; // 如果数组右边的数比较小，使用右边的数
+            else arr[k] = aux[i++]; // 如果数组左边的数比较小，使用左边的数
         }
     }
 }
