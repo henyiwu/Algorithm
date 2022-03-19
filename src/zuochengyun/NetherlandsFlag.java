@@ -8,9 +8,9 @@ import java.util.Arrays;
 public class NetherlandsFlag {
 
     public static void main(String[] args) {
-        int[] arr = {5,2,6,4,1,7,4,3,4,4,1,5,7,2,25,25,1435,31,1,71,13,135,13,134,51345,24};
+        int[] arr = {1,4,2,5,3};
 //        partition(arr, 4, 0, arr.length-1);
-        partitionEqualOrLessThan(arr, 100);
+        partitionEqualOrLessThan(arr, 3);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -35,6 +35,14 @@ public class NetherlandsFlag {
      * 1. 遇到小于等于p的数，把less的下一个和index对应的数交换，并且index++
      * 2. 遇到大于p的数，index++
      * 这样的目的是找出小于等于p的数，放到小于等于区，且小于等于区扩张
+     * 例如：
+     * [1,4,2,5,3] p = 3
+     * step1: | [1,4,2,5,3]
+     * step2:  [1 |,4,2,5,3] index = 0
+     * step3:  [1 |,4,2,5,3] index = 1
+     * step4:  [1,,2|,4,5,3] index = 2
+     * step4:  [1,,2|,4,5,3] index = 3
+     * step5:  [1,,2,3|,5,4] index = 3
      */
     public static void partitionEqualOrLessThan(int[] arr, int p) {
         int less = -1;
