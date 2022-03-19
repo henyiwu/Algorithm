@@ -7,7 +7,7 @@ public class MergeSort {
     private static int[] aux;
 
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
+        int[] arr = {1,3,4,2,5};
 //        sort(arr);
 //        System.out.println(Arrays.toString(arr));
         System.out.println(smallSum(arr));
@@ -83,14 +83,15 @@ public class MergeSort {
         for (int k = start; k <= end; k++) {
             aux[k] = arr[k];
         }
+        // 取小和时，如果遇到两个数相等的情况，要优先合并右边的数，否则求小和结果不对（虽然排序正确）
         for (int k = start; k <= end; k++) {
-            if (i > mid) arr[k] = aux[j++]; // 数组左边已经遍历完，直接使用右边的数
-            else if (j > end) arr[k] = aux[i++]; // 数组右边已经遍历完，直接使用左边的数
-            else if (aux[j] < aux[i]) arr[k] = aux[j++]; // 如果数组右边的数比较小，使用右边的数
-            else {
+            if (i > mid) arr[k] = aux[j++];
+            else if (j > end) arr[k] = aux[i++];
+            else if (aux[i] < aux[j]) {
                 result += aux[i] < aux[j] ? (end-j+1) * aux[i]: 0;
-                arr[k] = aux[i++]; // 如果数组左边的数比较小，使用左边的数
+                arr[k] = aux[i++];
             }
+            else arr[k] = aux[j++];
         }
         return result;
     }
