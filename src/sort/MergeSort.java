@@ -25,6 +25,9 @@ public class MergeSort {
         merge(arr, start, mid, end);
     }
 
+    /**
+     * 把左右已经有序的数组合并
+     */
     public static void merge(int[] arr, int start, int mid, int end) {
         int i = start;
         int j = mid + 1;
