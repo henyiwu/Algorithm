@@ -21,7 +21,7 @@ public class ReverseList {
             System.out.print(temp.getData() + ",");
             temp = temp.getNextNode();
         }
-        head = reverse(head);
+        head = reverse2(head);
         System.out.println("");
         System.out.println("*********************");
         while (head != null) {
@@ -30,6 +30,11 @@ public class ReverseList {
         }
     }
 
+    /**
+     * 递归反转链表
+     * @param head
+     * @return
+     */
     public static Node reverse(Node head) {
         if (head == null || head.getNextNode() == null)
             return head;
@@ -37,6 +42,25 @@ public class ReverseList {
         head.getNextNode().setNextNode(head);
         head.setNextNode(null);
         return reverseHead;
+    }
+
+    /**
+     * 循环反转链表
+     * 1 -> 2 -> 3 -> 4
+     * null <- 1      2 ->3 -> 4
+     */
+    public static Node reverse2(Node head) {
+        if (head == null || head.getNextNode() == null)
+            return head;
+        Node pre = null;
+        Node next = null;
+        while(head != null) {
+            next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+        return pre;
     }
 }
 
