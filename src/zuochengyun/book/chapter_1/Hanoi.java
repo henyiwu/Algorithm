@@ -1,8 +1,12 @@
 package zuochengyun.book.chapter_1;
 
+import org.openjdk.jol.info.ClassLayout;
+
 public class Hanoi {
     public static void main(String[] args) {
         System.out.println(hanoi(4, "x", "y", "z"));
+
+        System.out.println(ClassLayout.parseInstance(new Object()).toPrintable());
     }
 
     public static int hanoi(int n, String from, String mid, String to) {
