@@ -20,11 +20,19 @@ public class Title7 {
     /**
      * 前序[1][2,4,7][3,5,6,8]
      * 中序[4,7,2][1][5,3,8,6]
+     * @param preorder 前序遍历数字
+     * @param inorder 中毒遍历数组
+     * @param left 前序遍历数组中左子树left
+     * @param right 前序遍历数组中右子树right
+     * @param left1 中序遍历数组中左子树left
+     * @param right1 中序遍历数组中右子树right
+     * @return 根节点
      */
     private static TreeNode help(int[] preorder, int[] inorder, int left, int right, int left1, int right1) {
         if (left >= preorder.length || left1 >= inorder.length || left > right || left1 > right1) {
             return null;
         }
+        /* 前序遍历数组中找第一个数，就是子树的根节点 */
         int value = preorder[left];
         TreeNode node = new TreeNode(value);
         int count = left1;
