@@ -12,6 +12,9 @@ public class Title_3 {
         System.out.println(getDuplication(arr));
     }
 
+    /**
+     * 不是拿数组二分，是拿1~7这七个数二分
+     */
     static int getDuplication(int[] arr) {
         if (arr == null || arr.length <= 0) {
             return -1;
@@ -28,15 +31,20 @@ public class Title_3 {
                     break;
                 }
             }
+            // 重复的数字在start~middle范围内
             if (count > (middle - start + 1)) {
                 end = middle;
-            } else {
+            } else { // 重复的数字在middle+1~end范围内
                 start = middle + 1;
             }
         }
         return -1;
     }
 
+    /**
+     * 看start到end这个闭区间内，数组中数字出现多少次，
+     * 例如{3,2,4,2,1}，在start=1，end=3中，出现4次
+     */
     static int countRange(int[] arr, int start, int end) {
         if (arr == null) return 0;
         int count = 0;
