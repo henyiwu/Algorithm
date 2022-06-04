@@ -26,8 +26,10 @@ public class Title_3 {
             int count = countRange(arr, start, middle);
             if (end == start) {
                 if (count > 1) {
+                    System.out.println("找到重复数字");
                     return start;
                 } else {
+                    System.out.println("没有重复数字");
                     break;
                 }
             }
