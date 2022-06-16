@@ -13,14 +13,20 @@ public class Title11 {
 
     }
 
+    // 1 2 3 3 3 符合else
+    // 3 4 5 1 2 符合if
+    // 4 5 1 2 3 符合else if
+
     public int minArray(int[] array) {
         int left = 0;
         int right = array.length - 1;
         while (left <= right) {
             int mid = (left + right) / 2;
             if (array[mid] > array[right]) {
+                // min索引，左侧一定是递增的
                 left = mid + 1;
             } else if (array[mid] < array[right]) {
+                // min索引，右侧一定是递增的
                 right = mid;
             } else {
                 right--;
