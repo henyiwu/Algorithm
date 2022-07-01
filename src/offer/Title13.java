@@ -13,6 +13,7 @@ public class Title13 {
         movingCount(4,4,3);
     }
 
+    // 深度优先解法
     public static int movingCount(int m, int n, int k) {
         boolean[][] visited = new boolean[m][n];
         return dfs(0, 0, m, n, k, visited);
