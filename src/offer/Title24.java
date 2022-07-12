@@ -28,10 +28,14 @@ public class Title24 {
     }
 
     public static ListNode reverseList(ListNode head) {
+        // head == null， 防止传空链表进来
+        // head.next == null， 链表已经遍历到尾部
         if (head == null || head.next == null) {
             return head;
         }
+        // 递归，返回最后一个节点，作为反转后的头节点
         ListNode node = reverseList(head.next);
+        // 下一个节点指向当前节点，当前节点指向空
         head.next.next = head;
         head.next = null;
         return node;
