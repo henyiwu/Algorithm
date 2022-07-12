@@ -54,42 +54,46 @@ public class LeetCode_5 {
         return ans;
     }
 
-}
-
-/**
- * 动态规划
- */
-class Solution2 {
-    public String longestPalindrome(String s) {
+    /**
+     * 动态规划
+     * @param s
+     * @return
+     */
+    public static String longestPalindrome2(String s) {
         int len = s.length();
-        if(len <= 1)
+        if (len < 2) {
             return s;
-        boolean[][] flag =  new boolean[len][len];
-        int start = 0;    //回文串起始位置
-        int maxLen = 0;   //回文串最大长度
-        // 子串长度为1和为2的初始化
-        for(int i = 0; i < len; i++){
-            flag[i][i] = true;
-            if(i < len-1 && s.charAt(i) == s.charAt(i+1)){
-                flag[i][i+1] = true;
-                start = i;
-                maxLen = 2 ;
-            }
         }
-        //m代表回文子串长度，从3开始
-        for(int m = 3; m <= len; m++){
-            for(int i = 0; i <= len-m; i++){
-                int j = i+m-1;    // 子串结束的位置
-                if(flag[i+1][j-1] && s.charAt(i)== s.charAt(j)){
-                    flag[i][j] = true;
-                    start = i;
-                    maxLen = m;
+        //最大长度
+        int maxLen = 1;
+        int begin = 0;
+        //存储是否是回文串
+        boolean[][] dp = new boolean[len][len];
+        char[] chars = s.toCharArray();
+        //单个字符一定是回文
+        for (int i = 0; i < len; i++) {
+            dp[i][i] = true;
+        }
+
+        for (int j = 1; j < len; j++) {
+            for (int i = 0; i < j; i++) {
+                if (chars[i] != chars[j]) {
+                    dp[i][j] = false;
+                } else {
+                    //长度为2或3是，肯定是回文。即除去chars[i]和 chars[j]后，只要1个或0个字符。防止出现例如 i=2 j=3情况下 查看dp[3][2]。
+                    if (j - i < 2) {
+                        dp[i][j] = true;
+                    } else {
+                        //排除头尾元素后，是否是回文串
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
+                }
+                if (dp[i][j] && j - i + 1 > maxLen) {
+                    maxLen = j - i + 1;
+                    begin = i;
                 }
             }
         }
-        if(start == 0 && maxLen == 0)
-            return String.valueOf(s.charAt(0));
-        return s.substring(start, start + maxLen);
+        return s.substring(begin, maxLen + begin);
     }
-
 }
