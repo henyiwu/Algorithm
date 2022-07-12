@@ -70,14 +70,19 @@ public class LeetCode_5 {
         //存储是否是回文串
         boolean[][] dp = new boolean[len][len];
         char[] chars = s.toCharArray();
-        //单个字符一定是回文
+        // 单个字符一定是回文
+        // 填充二维数组的斜对角线
         for (int i = 0; i < len; i++) {
             dp[i][i] = true;
         }
 
+        // 循环斜对角的右上方部分
+        // i : 从第i个开始
+        // j : 从第j个开始
+        // dp[i][j] : 从i到j的子串是否是回文数
         for (int j = 1; j < len; j++) {
             for (int i = 0; i < j; i++) {
-                if (chars[i] != chars[j]) {
+                if (chars[i] != chars[j]) { // 首尾字符不想等，一定不是回文串
                     dp[i][j] = false;
                 } else {
                     //长度为2或3是，肯定是回文。即除去chars[i]和 chars[j]后，只要1个或0个字符。防止出现例如 i=2 j=3情况下 查看dp[3][2]。
@@ -88,6 +93,7 @@ public class LeetCode_5 {
                         dp[i][j] = dp[i + 1][j - 1];
                     }
                 }
+                // 当前字符串是回文串，且长度比最大长度大
                 if (dp[i][j] && j - i + 1 > maxLen) {
                     maxLen = j - i + 1;
                     begin = i;
