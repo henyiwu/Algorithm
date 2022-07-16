@@ -43,19 +43,15 @@ public class Title27 {
     }
 
     public TreeNode mirrorTree(TreeNode root) {
-        switchChildren(root);
-        return root;
-    }
-
-    public void switchChildren(TreeNode treeNode) {
-        if (treeNode == null) {
-            return;
+        if (root == null) {
+            return null;
         }
-        TreeNode left = treeNode.left;
-        TreeNode right = treeNode.right;
-        treeNode.right = left;
-        treeNode.left = right;
-        switchChildren(treeNode.left);
-        switchChildren(treeNode.right);
+        TreeNode left = root.left;
+        TreeNode right = root.right;
+        root.right = left;
+        root.left = right;
+        mirrorTree(root.left);
+        mirrorTree(root.right);
+        return root;
     }
 }
