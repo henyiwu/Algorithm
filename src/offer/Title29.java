@@ -23,6 +23,14 @@ public class Title29 {
         spiralOrder(arr);
     }
 
+    /**
+     * 四个判断
+     * 向右走到越界或者一个曾走过的数，一定向下走
+     * 向下走到越界或者一个曾走过的数，一定向左走
+     * 向左走到越界或者一个曾走过的数，一定向上走
+     * 向上走到越界或者一个曾走过的数，一定向右走
+     * 以此循环
+     */
     public static int[] spiralOrder(int[][] matrix) {
         int direction = 4; // 1 2 3 4 上下左右
         if (matrix == null || matrix.length == 0) {
