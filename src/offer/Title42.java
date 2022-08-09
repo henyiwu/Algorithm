@@ -16,13 +16,27 @@ package offer;
  */
 public class Title42 {
 
-//    class Solution {
-//        public int maxSubArray(int[] nums) {
-//
-//        }
-//    }
+    static class Solution {
+        public int maxSubArray(int[] nums) {
+            int curMax = nums[0];
+            int resultMax = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                if (curMax < 0) {
+                    curMax = nums[i];
+                } else {
+                    curMax = curMax + nums[i];
+                }
+                // 同理
+                // curMax = Math.max(nums[i], nums[i] + curMax);
+                resultMax = Math.max(curMax, resultMax);
+            }
+            return resultMax;
+        }
+    }
 
     public static void main(String[] args) {
-
+        int[] arr = {-1, -2, -3, -1, -2};
+        Solution solution = new Solution();
+        System.out.println(solution.maxSubArray(arr));
     }
 }
