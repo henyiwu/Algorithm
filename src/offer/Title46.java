@@ -45,6 +45,6 @@ public class Title46 {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.translateNum(123));
+        System.out.println(solution.translateNum(121222));
     }
 }
