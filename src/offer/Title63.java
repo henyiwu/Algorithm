@@ -31,7 +31,7 @@ public class Title63 {
 
     static class Solution {
         public int maxProfit(int[] prices) {
-            // 1. 构建二维数组，横向表示卖出，纵向表示买入
+            // 1. 构建逻辑二维数组，横向表示卖出，纵向表示买入(使用二维数组内存超出)
             int max = 0;
             for (int i = 0; i < prices.length; i++) {
                 for (int j = i + 1; j < prices.length; j++) {
