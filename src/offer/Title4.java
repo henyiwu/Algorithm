@@ -16,7 +16,8 @@ package offer;
  */
 public class Title4 {
     public static void main(String[] args) {
-
+        int[][] arr = {{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}};
+        findNum(arr, 20);
     }
 
     /**
@@ -29,13 +30,18 @@ public class Title4 {
         if (arr == null || arr.length == 0) {
             return false;
         }
-        int i = 0;
-        int j = arr[0].length - 1; // 右上角
 
-        while (i < arr.length && j >= 0 && i >= 0) {
-            if (target == arr[i][j]) return true; // 先判断相等，否则i，j改变会越界
-            if (target < arr[i][j]) j--;
-            else i++;
+        int i = 0; // 右上角横坐标
+        int j = arr[0].length - 1; // 右上角纵坐标
+
+        while (j >= 0 && i < arr.length) {
+            if (arr[i][j] == target) {
+                return true;
+            } else if (arr[i][j] > target) {
+                j--;
+            } else {
+                i++;
+            }
         }
 
         return false;

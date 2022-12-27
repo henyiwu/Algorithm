@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class Title3 {
     public static void main(String[] args) {
-        int[] arr = {3, 4, 2, 1, 1, 0};
+        int[] arr = {3, 4, 2, 1, 1, 1};
         System.out.println(duplicate2(arr));
     }
 
@@ -41,8 +41,8 @@ public class Title3 {
      * <p>
      * 测试数据： [2, 3, 1, 0, 2, 5, 3]
      * loop0:   [1, 3, 2, 0, 2, 5, 3]
-     *          [3, 1, 2, 0, 2, 5, 3]
-     *          [0, 1, 2, 3, 2, 5, 3]   i=0位置一定是0
+     * [3, 1, 2, 0, 2, 5, 3]
+     * [0, 1, 2, 3, 2, 5, 3]   i=0位置一定是0
      * -----------------------
      * loop1:   [0, 1, 2, 3, 2, 5, 3]   i=1位置一定是1
      * -----------------------
@@ -58,7 +58,9 @@ public class Title3 {
             return -1;
         }
         for (int i = 0; i < arr.length; i++) {
+            // 假如i=0,把0放到i=0的位置
             while (i != arr[i]) {
+                // 找到两个重复的数字
                 if (arr[i] == arr[arr[i]]) {
                     return arr[i];
                 }
