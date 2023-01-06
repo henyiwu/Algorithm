@@ -6,6 +6,8 @@ import java.util.Arrays;
  * 从尾到头打印链表
  * <p>
  * 直观解法：压栈
+ * <p>
+ * 简单
  */
 public class Title6 {
     public static void main(String[] args) {
@@ -22,22 +24,24 @@ public class Title6 {
     /**
      * 高效解法：
      * 1. 先确定数组大小
-     * 2. 遍历链表，把数值从后向钱往数组填充
+     * 2. 遍历链表，把数值从后向前往数组填充
      */
     public static int[] reversePrint(ListNode head) {
+        // 确定数组大小
         ListNode temp = head;
         int size = 0;
         while (temp != null) {
-            temp = temp.next;
             size++;
+            temp = temp.next;
         }
-        int[] arr = new int[size];
+        int[] result = new int[size];
         temp = head;
         for (int i = size - 1; i >= 0; i--) {
-            arr[i] = temp.val;
+            result[i] = temp.val;
             temp = temp.next;
         }
-        return arr;
+        return result;
+        // 把数组从后向前填充
     }
 }
 

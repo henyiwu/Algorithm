@@ -13,6 +13,8 @@ package offer;
  * <p>
  * 查找7，返回true
  * 查找5，返回false
+ *
+ * 中等
  */
 public class Title4 {
     public static void main(String[] args) {
