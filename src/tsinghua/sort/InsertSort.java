@@ -18,14 +18,14 @@ public class InsertSort {
 
     public static void insertSort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            int temp = arr[i]; // 无序组当前要插入的数
-            int j = i - 1; // j指的是手里牌的下标
-            while (j >= 0 && arr[j] > temp) { // 找到适合插入的位置
+            int current = arr[i]; // 当前要排序的数
+            int j = i - 1; // 当前有序区的最后一个数
+            while (j >= 0 && arr[j] > current) { // 从有序区的右边向左边比较，移动数组，找到合适的插入位置
                 arr[j + 1] = arr[j];
-                j = j - 1;
+                j--;
             }
-            arr[j + 1] = temp;
-            System.out.println(Arrays.toString(arr));
+            arr[++j] = current;
+            System.out.println("第" + i + "趟:" + Arrays.toString(arr));
         }
     }
 }
