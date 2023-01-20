@@ -36,6 +36,7 @@ public class HeapSort {
             heapAdjust(arr, i, arr.length);
         }
         // 把第一个数和最后一个数交换，构建堆
+        // 从arr.length-1开始，因为已经换掉了一个数
         for (int i = arr.length - 1; i >= 0; i--) {
             int temp = arr[0];
             arr[0] = arr[i];
