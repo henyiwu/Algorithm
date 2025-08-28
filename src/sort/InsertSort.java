@@ -5,19 +5,21 @@ import java.util.Arrays;
 public class InsertSort {
 
     public static void main(String[] args) {
-        int arr[] = {1,4,3,1,52,5,2,50,51};
+        int[] arr = {51, 10, 45, 1, 4};
+        System.out.println("原数据:" + Arrays.toString(arr));
         insertSort(arr);
-        System.out.println(Arrays.toString(arr));
+        System.out.println("result:" + Arrays.toString(arr));
     }
 
     public static void insertSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
-        for (int i = 1; i < arr.length; i++) { // 0~i有序
-            // 每个子数组，后一位比前一位小时，交换两个数
-            for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
-                swap(arr, j+1, j);
+        for (int i = 1; i < arr.length - 1; i++) {
+            for (int j = i; j >= 0; j--) {
+                if (arr[j + 1] < arr[j]) {
+                    swap(arr, j, j + 1);
+                }
             }
         }
     }
